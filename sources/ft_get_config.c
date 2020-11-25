@@ -101,7 +101,7 @@ void	parse_map(t_all *all, t_map mp)
 				all->spr_count++;
 			if (check_plr(all, all->map[mp.i][mp.j], mp.x, mp.y) == 1)
 			{
-				mp.flg = 1;
+				mp.flg += 1;
 				all->map[mp.i][mp.j] = '0';
 			}
 			mp.x += 64;

@@ -23,17 +23,18 @@ void		validate_map(t_all *all, char **m)
 		x = -1;
 		while (m[y][++x])
 		{
-			if (m[y][x] != '1' && m[y][x] != ' ' && m[y][x])
+			if (m[y][x] != '1' && m[y][x] != ' ' && m[y][x] != '\0')
 			{
-				if (x == 0 || x == all->map_h - 1)
-					ft_exit("Map is broken.", all);
-				if (y == 0 || y == all->map_v - 1)
+				if ((x == 0 || x == all->map_h - 1) || \
+				(y == 0 || y == all->map_v - 1))
 					ft_exit("Map is broken.", all);
 				if (x + 1 < all->map_h && m[y][x + 1] == ' ')
 					ft_exit("Map is broken.", all);
 				if (m[y][x - 1] == ' ' || m[y - 1][x] == ' ')
 					ft_exit("Map is broken.", all);
-				if (y + 1 < all->map_v && m[y + 1][x] == ' ')
+				if (m[y + 1] != NULL && m[y + 1][x] == ' ')
+					ft_exit("Map is broken.", all);
+				if (m[y + 1] == NULL || m[y][x + 1] == '\0')
 					ft_exit("Map is broken.", all);
 			}
 		}
